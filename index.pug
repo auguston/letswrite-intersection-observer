@@ -1,0 +1,179 @@
+- var link = 'letswrite-intersection-observer'
+- var title = 'IntersectionObserver：下篇-實際應用 lazyload、進場效果、無限捲動'
+- var description = '文章大綱'
+
+<!DOCTYPE html>
+html(lang="zh-TW")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title #{title} - Augustus - Let's Write
+
+    link(rel="canonical", href=`https://auguston.github.io/${link}/`)
+    meta(property="og:url", content=`https://auguston.github.io/${link}/`)
+
+    meta(property="fb:app_id", content="2435108729902508")
+    meta(property="og:type", content="website")
+
+    meta(property="og:site_name", content="Let's Write")
+    meta(property="og:title", content=`${title} - Augustus - Let's Write`)
+    meta(itemprop="name", content=`${title} - Augustus - Let's Write`)
+
+    meta(name="description", content=description)
+    meta(property="og:description", content=description)
+    meta(itemprop="description", content=description)
+
+    meta(itemprop="image", content=`https://auguston.github.io/${link}/fb.jpg`)
+    meta(property="og:image", content=`https://auguston.github.io/${link}/fb.jpg`)
+    meta(property="og:image:width", content="1200")
+    meta(property="og:image:height", content="630")
+    meta(property="og:image:alt", content=title)
+
+    link(rel="shortcut icon", href="https://i0.wp.com/letswrite.tw/wp-content/uploads/2019/07/cropped-letswrite512-1.jpg")
+
+    //- css
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css")
+    link(rel="stylesheet", href="dist/style.min.css")
+
+    //- 頁面用的 style，可刪
+    style.
+      body {
+        background: #F5F5F5;
+      }
+
+    // Google Tag Manager
+    script.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PGQ9WQT');
+  body
+
+    // Google Tag Manager (noscript)
+    noscript
+      iframe(src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT", height="0", width="0", style="display:none;visibility:hidden")
+
+    #app.container
+
+      .row
+        .col.text-center
+          h1.mb-4.h2 IntersectionObserver：下篇-實際應用<br/>lazyload、進場效果、無限捲動
+          h6.font-weight-normal 筆記文：
+            a(href="") 上篇 基本使用
+            | 、
+            a(href="") 下篇 實際應用
+
+      hr.mb-5
+
+      // lazy load
+      section.row.text-center.lazy-wrap
+        
+        .col-12.mb-5
+          h2.h3 延遲載入 lazy load
+        
+        .col-12.text-left
+          h4 HTML
+        .col-12.mb-5
+          script(src="https://gist.github.com/auguston/f1765b10a5da683b53bf9c7ba2c945cd.js")
+        
+        .col-12.text-left
+          h4 JavaScript
+        .col-12.mb-5
+          script(src="https://gist.github.com/auguston/f7928699baa9e9c3cf38e222cc215eea.js")
+        
+        .col-12
+          .alert.alert-primary
+            | 以下開始 
+            strong lazy load
+            |  範例（請開console的network看img的請求狀況）
+        
+        .col-12.mb-5
+          // .lazy 觀察器觀察的目標
+          // data-src 圖片或影片的路徑
+          img.lazy.img-fluid.img-thumbnail(data-src="dist/demo1.jpg")
+        .col-12.mb-5
+          img.lazy.img-fluid.img-thumbnail(data-src="dist/demo2.jpg")
+        .col-12.mb-5
+          img.lazy.img-fluid.img-thumbnail(data-src="dist/demo3.jpg")
+        .col-12.mb-5
+          img.lazy.img-fluid.img-thumbnail(data-src="dist/demo4.jpg")
+        .col-12.mb-5
+          img.lazy.img-fluid.img-thumbnail(data-src="dist/demo5.jpg")
+        .col-12.mb-5
+          .embed-responsive.embed-responsive-16by9
+            iframe.lazy(data-src="https://www.youtube.com/embed/HK7SPnGSxLM", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+        .col-12.mb-5
+          .embed-responsive.embed-responsive-16by9
+            iframe.lazy(data-src="https://www.youtube.com/embed/sjx_rpay9rk", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+      
+      hr.mb-5
+
+      // 進場效果
+      section.row.text-center
+
+        .col-12.mb-5
+          h2.h3 進場效果
+
+        .col-12.text-left
+          h4 HTML
+        .col-12.mb-5
+          script(src="https://gist.github.com/auguston/a5d40087f4e916cac46bfba25cd1cbbf.js")
+        
+        .col-12.text-left
+          h4 JavaScript
+        .col-12.mb-5
+          script(src="https://gist.github.com/auguston/d051515bb12fe22feb3564a0701701b5.js")
+        
+        .col-12
+          .alert.alert-primary
+            | 以下開始 
+            strong 進場效果
+            |  範例
+        
+        .col-12.mb-5.animated.op-0.js-animated(data-animated="bounceInLeft")
+          img.img-fluid.img-thumbnail(src="https://picsum.photos/id/237/335/335")
+        .col-12.mb-5.animated.op-0.js-animated(data-animated="fadeInRight")
+          img.img-fluid.img-thumbnail(src="https://picsum.photos/id/197/335/335")
+        .col-12.mb-5.animated.op-0.js-animated(data-animated="flipInY")
+          img.img-fluid.img-thumbnail(src="https://picsum.photos/id/1036/335/335")
+        .col-12.mb-5.animated.op-0.js-animated(data-animated="lightSpeedIn")
+          img.img-fluid.img-thumbnail(src="https://picsum.photos/id/1041/335/335")
+        .col-12.mb-5.animated.op-0.js-animated(data-animated="rotateIn")
+          img.img-fluid.img-thumbnail(src="https://picsum.photos/id/168/335/335")
+      
+      hr.mb-5
+
+      // 無限捲動
+      section.row.text-center
+
+        .col-12.mb-5
+          h2.h3 無限捲動
+
+        .col-12.text-left
+          h4 HTML
+        .col-12.mb-5
+          script(src="https://gist.github.com/auguston/1127a1b430539833727a0d58f7d3d965.js")
+        
+        .col-12.text-left
+          h4 JavaScript
+        .col-12.mb-5
+          script(src="https://gist.github.com/auguston/0c2c9f0edcffe7762ff6db69d4c621fe.js")
+
+        .col-12
+          .alert.alert-primary
+            | 以下開始 
+            strong 無限捲動
+            |  範例
+        
+        // #js-infinite-wrap：js 要 insert 的地方
+        #js-infinite-wrap.col-12.mb-5
+
+        // #js-detective 載入下一篇的觀察目標
+        #js-detective
+
+
+
+    script(src="dist/main.min.js")
